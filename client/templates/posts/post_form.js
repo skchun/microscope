@@ -5,11 +5,9 @@ Template.postForm.events({
 
     // stop the form from submitting
     event.preventDefault();
-
-    Posts.insert({
-      title: event.target.title.value,
-      url: event.target.url.value
-    });
+    var urlVar = event.target.url.value;
+    var titleVar = event.target.title.value;
+    Meteor.call('addPost', urlVar, titleVar);
 
     template.find("form").reset();
   }
